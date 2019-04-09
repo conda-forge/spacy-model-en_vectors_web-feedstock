@@ -14,7 +14,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
 
 test:
   commands:
@@ -22,8 +22,11 @@ test:
 
 outputs:
   - name: {{prefix}}{{ name }}_{{ size }}
-    script: build.sh  # [unix]
-    script: build.bat  # [win]
+    build:
+      noarch: python
+      script: build.sh  # [unix]
+      script: build.bat  # [win]
+      number: 1
     requirements:
       host:
         - python

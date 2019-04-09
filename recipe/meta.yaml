@@ -24,8 +24,8 @@ outputs:
   - name: {{prefix}}{{ name }}_{{ size }}
     build:
       noarch: python
-      script: build.sh  # [unix]
-      script: build.bat  # [win]
+      script: {{ RECIPE_DIR }}\build.sh  # [unix]
+      script: {{ RECIPE_DIR }}/build.bat  # [win]
       number: 1
     requirements:
       host:

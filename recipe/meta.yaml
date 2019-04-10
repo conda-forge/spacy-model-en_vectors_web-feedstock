@@ -15,7 +15,7 @@ source:
 
 build:
   noarch: python
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -33,7 +33,7 @@ outputs:
   - name: {{prefix}}{{ name }}_{{ size }}
     build:
       noarch: python
-      number: 1
+      number: 0
       script: cd {{ size }} && {{ PYTHON }} -m pip install . --no-deps -vv
     requirements:
       host:

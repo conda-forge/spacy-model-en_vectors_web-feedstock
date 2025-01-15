@@ -15,38 +15,41 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
   run:
     - setuptools
-    - python
+    - python >={{ python_min }}
 
 test:
+  requires:
+    - python {{ python_min }}
   commands:
     - echo "make lint happy"
 
 outputs:
-  - name: {{prefix}}{{ name }}_{{ size }}
+  - name: {{ prefix }}{{ name }}_{{ size }}
     build:
       noarch: python
-      number: 0
+      number: 1
       script: cd {{ size }} && {{ PYTHON }} -m pip install . --no-deps -vv
     requirements:
       host:
         - pip
-        - python
+        - python {{ python_min }}
       run:
-        - python
+        - python >={{ python_min }}
         - setuptools
     test:
       imports:
         - {{ name }}_{{ size }}
       requires:
         - spacy {{ version.split('.')[0] }}.*
+        - python {{ python_min }}
       commands:
         - python -c "__import__('{{ name }}_{{ size }}').load()"
         - python -c "__import__('spacy').load('{{ name }}_{{ size }}')"

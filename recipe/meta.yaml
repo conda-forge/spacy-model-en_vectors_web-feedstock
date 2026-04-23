@@ -1,6 +1,6 @@
 {% set prefix = "spacy-model-" %}
 {% set name = "en_vectors_web" %}
-{% set version = "2.1.0" %}
+{% set version = "2.3.0" %}
 
 package:
   name: {{ prefix }}{{ name|lower }}
@@ -9,7 +9,7 @@ package:
 source:
   - folder: lg
     url: https://github.com/explosion/spacy-models/releases/download/{{ name }}_lg-{{ version }}/{{ name }}_lg-{{ version }}.tar.gz
-    sha256: 24bd1f5f192bdcf5ba8fe3b9f517ec24024ea22dbd8c89b470250870f20d04eb
+    sha256: 839c177a604cd916e10700b43f7c80ca67fff1f3b5961847ef6c01c8b308e08d
   - url: https://creativecommons.org/licenses/by-sa/3.0/legalcode.txt
     sha256: 3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f
 
@@ -30,7 +30,7 @@ test:
     - echo "make lint happy"
 
 outputs:
-  - name: {{prefix}}{{ name }}_{{ size }}
+  - name: {{ prefix }}{{ name }}_{{ size }}
     build:
       noarch: python
       number: 0
@@ -54,7 +54,7 @@ outputs:
 about:
   home: https://spacy.io
   license: CC BY-SA 3.0
-  summary: 'English multi-task CNN trained on OntoNotes, with GloVe vectors trained on Common Crawl.'
+  summary: English multi-task CNN trained on OntoNotes, with GloVe vectors trained on Common Crawl.
   license_file: legalcode.txt
 
   doc_url: https://spacy.io/models/en
